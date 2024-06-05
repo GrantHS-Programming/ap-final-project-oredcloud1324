@@ -17,15 +17,26 @@ public class PlayerMovment : MonoBehaviour
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         
-        animator.SetFloat("")
+        animator.SetFloat("speed", Mathf.Abs(horizontalMove));
         
-        if (Input.GetButtonDown("Jump")){
+        if (Input.GetKeyDown (KeyCode.W)){
         jump = true;
+        animator.SetBool("IsJumping", true);
+        }
+        
+        if (Input.GetKeyDown (KeyCode.Mouse0)){
+            
+            animator.SetBool("IsAttacking", true);
         }
         
         
-        
     }
+    
+    public void OnLanding (){
+    animator.SetBool("IsJumping", false);
+    }
+    
+    
     
     void FixedUpdate (){
     controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
