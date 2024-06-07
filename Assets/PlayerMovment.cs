@@ -29,13 +29,14 @@ public class PlayerMovment : MonoBehaviour
             animator.SetBool("IsAttacking", true);
         }
         
-        
+        else{
+        animator.SetBool("IsAttacking", false);
+        }
     }
     
     public void OnLanding (){
     animator.SetBool("IsJumping", false);
     }
-    
     
     
     void FixedUpdate (){
